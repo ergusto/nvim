@@ -1,0 +1,1 @@
+# ergusto's nvim config
