@@ -19,6 +19,10 @@ vim.opt.showmode = false
 -- Enable break indent
 vim.opt.breakindent = true
 
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -53,8 +57,9 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
+-- See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
 -- Exit insert mode with jk
 vim.keymap.set("i", "jk", "<Esc>")
 
@@ -98,6 +103,14 @@ require("lazy").setup({
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
 	-- Use `opts = {}` to force a plugin to be loaded.
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("bufferline").setup({})
+		end,
+	},
 
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
@@ -118,7 +131,7 @@ require("lazy").setup({
 		priority = 1000,
 		init = function()
 			require("github-theme").setup({})
-			vim.cmd.colorscheme("github_dark")
+			vim.cmd.colorscheme("github_dark_dimmed")
 		end,
 	},
 
@@ -632,7 +645,7 @@ require("lazy").setup({
 		opts = { signs = false },
 	},
 
-	{ -- Collection of various small independent plugins/modules
+	{
 		"echasnovski/mini.nvim",
 		config = function()
 			-- Better Around/Inside textobjects
@@ -664,11 +677,9 @@ require("lazy").setup({
 			statusline.section_location = function()
 				return "%2l:%-2v"
 			end
-
-			-- ... and there is more!
-			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
+
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -685,6 +696,7 @@ require("lazy").setup({
 				"markdown",
 				"markdown_inline",
 				"query",
+				"typescript",
 				"vim",
 				"vimdoc",
 			},
@@ -707,15 +719,6 @@ require("lazy").setup({
 		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	},
 
-	-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
-	-- init.lua. If you want these files, they are in the repository, so you can just download them and
-	-- place them in the correct locations.
-
-	-- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
-	--
-	--  Here are some example plugins that I've included in the Kickstart repository.
-	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
-	--
 	require("kickstart.plugins.debug"),
 	require("kickstart.plugins.indent_line"),
 	-- require 'kickstart.plugins.lint',
@@ -727,6 +730,3 @@ require("lazy").setup({
 	--    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
 	-- { import = 'custom.plugins' },
 })
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
