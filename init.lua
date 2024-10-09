@@ -14,7 +14,6 @@ require("lazy").setup({
 	require("plugins.which-key"),
 	require("plugins.telescope"),
 	require("plugins.lazydev"),
-	require("plugins.luvit-meta"),
 	require("plugins.lspconfig"),
 	require("plugins.mini"),
 	require("plugins.treesitter"),
@@ -25,4 +24,5 @@ require("lazy").setup({
 	require("plugins.neo-tree"),
 	require("plugins.trouble"),
 	require("plugins.neotest"),
+	require("plugins.lsp-lens"),
 })
