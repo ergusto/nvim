@@ -19,7 +19,7 @@ return {
 		{
 			"<leader>tf",
 			function()
-				require("neotest").run.run(vim.uv.cwd())
+				require("neotest").run.run(vim.fn.expand("%"))
 			end,
 			desc = "Run current test file",
 		},

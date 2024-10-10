@@ -14,6 +14,7 @@ require("lazy").setup({
 	require("plugins.which-key"),
 	require("plugins.telescope"),
 	require("plugins.lazydev"),
+	require("plugins.lazygit"),
 	require("plugins.lspconfig"),
 	require("plugins.mini"),
 	require("plugins.treesitter"),
