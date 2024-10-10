@@ -6,7 +6,6 @@ require("core.lazy")
 -- Plugins
 require("lazy").setup({
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-	require("plugins.bufferline"),
 	require("plugins.gitsigns"),
 	require("plugins.conform-nvim"),
 	require("plugins.github-theme"),
@@ -25,5 +24,5 @@ require("lazy").setup({
 	require("plugins.neo-tree"),
 	require("plugins.trouble"),
 	require("plugins.neotest"),
-	require("plugins.lsp-lens"),
+	require("plugins.harpoon"),
 })
