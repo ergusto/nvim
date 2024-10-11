@@ -74,6 +74,9 @@ return {
 					end,
 				}),
 			},
+			summary = {
+				open = "botright vsplit | vertical resize 80",
+			},
 		})
 	end,
 }
