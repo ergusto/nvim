@@ -1,7 +1,8 @@
 return {
 	{
-		"harpoon-named-lists",
-		dir = "~/projects/nvim/harpoon-named-lists", -- Path to your local plugin directory
+		"harpoon-lists",
+		dir = "~/personal/harpoon-lists", -- Path to your local plugin directory
+		dev = true,
 		dependencies = {
 			{
 				"ThePrimeagen/harpoon",
@@ -12,7 +13,7 @@ return {
 			"nvim-telescope/telescope.nvim", -- Telescope for input handling
 		},
 		config = function()
-			local lists = require("harpoon_named_lists")
+			local lists = require("harpoon-lists")
 
 			lists.setup({
 				keymaps = {

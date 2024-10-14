@@ -24,7 +24,7 @@ require("lazy").setup({
 	require("plugins.trouble"),
 	require("plugins.neotest"),
 	require("plugins.harpoon"),
-	require("plugins.harpoon-named-lists"),
+	require("plugins.harpoon-lists"),
 	require("plugins.copilot"),
 	require("plugins.copilot-cmp"),
 })
