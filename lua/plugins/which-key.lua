@@ -12,5 +12,6 @@ return {
 			{ "<leader>t", group = "[T]est" },
 			{ "<leader>h", group = "[H]arpoon" },
 		},
+		expand = 1,
 	},
 }
