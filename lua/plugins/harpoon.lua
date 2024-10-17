@@ -28,6 +28,24 @@ return {
 			desc = "remove file from default list",
 		},
 		{
+			"<leader>hc",
+			function()
+				local harpoon = require("harpoon")
+
+				vim.ui.input({
+					prompt = "Enter a name for this list: ",
+				}, function(name)
+					if name then
+						local list = harpoon:list(name)
+						print("You created the Harpoon list: " .. list:display())
+					else
+						return
+					end
+				end)
+			end,
+			desc = "Create a new harpoon list",
+		},
+		{
 			"<leader>hl",
 			function()
 				local harpoon = require("harpoon")
