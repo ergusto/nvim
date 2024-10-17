@@ -25,7 +25,7 @@ return {
 
 				harpoon:list():remove(item)
 			end,
-			desc = "remove file from default list",
+			desc = "remove current buffer from default list",
 		},
 		{
 			"<leader>hl",
