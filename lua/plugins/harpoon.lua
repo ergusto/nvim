@@ -1,3 +1,31 @@
+local function toggle_telescope(paths, title)
+	local conf = require("telescope.config").values
+	local pickers = require("telescope.pickers")
+	local finders = require("telescope.finders")
+	local action_state = require("telescope.actions.state")
+	local harpoon = require("harpoon")
+
+	pickers
+		.new({}, {
+			prompt_title = title,
+			finder = finders.new_table({
+				results = paths,
+			}),
+			previewer = conf.file_previewer({}),
+			sorter = conf.generic_sorter({}),
+			attach_mappings = function(_, map)
+				map("i", "<c-d>", function()
+					local selection = action_state.get_selected_entry()
+					local list = harpoon:list()
+					list:remove(selection.value)
+					print("You deleted from the Harpoon list: " .. list.name)
+				end)
+				return true
+			end,
+		})
+		:find()
+end
+
 return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
@@ -21,9 +49,9 @@ return {
 				end
 
 				local name = normalise_path(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), vim.fn.getcwd())
-				local item = harpoon:list():get_by_value(name)
+				local _, index = harpoon:list():get_by_value(name)
 
-				harpoon:list():remove(item)
+				harpoon:list():remove_at(index)
 			end,
 			desc = "remove file from default list",
 		},
@@ -37,7 +65,7 @@ return {
 				}, function(name)
 					if name then
 						local list = harpoon:list(name)
-						print("You created the Harpoon list: " .. list:display())
+						print("You created the Harpoon list: " .. list.name)
 					else
 						return
 					end
@@ -49,28 +77,24 @@ return {
 			"<leader>hl",
 			function()
 				local harpoon = require("harpoon")
-				harpoon.ui:toggle_quick_menu(harpoon:list())
-				local conf = require("telescope.config").values
-				local function toggle_telescope(harpoon_files)
-					local file_paths = {}
-					for _, item in ipairs(harpoon_files.items) do
-						table.insert(file_paths, item.value)
-					end
-
-					require("telescope.pickers")
-						.new({}, {
-							prompt_title = "Harpoon",
-							finder = require("telescope.finders").new_table({
-								results = file_paths,
-							}),
-							previewer = conf.file_previewer({}),
-							sorter = conf.generic_sorter({}),
-						})
-						:find()
+				local files = harpoon:list()
+				harpoon.ui:toggle_quick_menu(files)
+				local file_paths = {}
+				for _, item in ipairs(files.items) do
+					table.insert(file_paths, item.value)
 				end
-				toggle_telescope(harpoon:list())
+				toggle_telescope(file_paths, "Harpoon list")
 			end,
 			desc = "Show harpoon list",
+		},
+		{
+			"<leader>hi",
+			function()
+				local harpoon = require("harpoon")
+
+				toggle_telescope(harpoon.lists, "Harpoon List list")
+			end,
+			desc = "Show harpoon lists",
 		},
 	},
 }
