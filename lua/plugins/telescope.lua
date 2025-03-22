@@ -42,10 +42,12 @@ return {
 			--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
 			--   },
 			-- },
+			defaults = {
+				file_ignore_patterns = { "^.git/", "^node_modules/", "^android/", "^ios/", "yarn.lock", "package%-lock.json" },
+			},
 			pickers = {
 				find_files = {
 					hidden = true,
-					file_ignore_patterns = { "^.git/" },
 				},
 			},
 			extensions = {
