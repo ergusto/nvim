@@ -25,3 +25,6 @@ vim.keymap.set("n", "<S-Tab>", ":bprev<CR>", opts)
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y') -- yank entire line
+
+-- Delete current buffer
+vim.keymap.set("n", "<leader>d", ":bd")
