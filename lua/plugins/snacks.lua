@@ -1,7 +1,12 @@
 return {
   {
     "nvimdev/snacks.nvim",
-    opts = {},
+    opts = {
+      picker = {
+        hidden = true,
+        ignored = true,
+      },
+    },
     keys = {
       {
         "<leader>o",
