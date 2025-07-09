@@ -5,6 +5,11 @@ return {
       picker = {
         hidden = true,
         ignored = true,
+        exclude = {
+          ".git",
+          "node_modules",
+          ".next",
+        },
       },
     },
     keys = {
