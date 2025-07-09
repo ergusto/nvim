@@ -1,6 +1,6 @@
 return {
   {
-    "nvimdev/snacks.nvim",
+    "folke/snacks.nvim",
     opts = {
       picker = {
         hidden = true,
