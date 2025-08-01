@@ -9,6 +9,7 @@ return {
           ".git",
           "node_modules",
           ".next",
+          "dist",
         },
       },
     },
