@@ -10,6 +10,7 @@ return {
           "node_modules",
           ".next",
           "dist",
+          ".DS_Store",
         },
       },
     },
