@@ -26,5 +26,9 @@ vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y') -- yank entire line
 
+-- Scroll up/down 10 lines, centered
+vim.keymap.set("n", "<C-d>", "10jzz")
+vim.keymap.set("n", "<C-u>", "10kzz")
+
 -- Delete current buffer
 vim.keymap.set("n", "<leader>d", ":bd")
